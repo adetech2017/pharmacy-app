@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Firefly\Traits\FireflyUser;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -9,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pharmacy extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, FireflyUser;
 
     protected $guard = 'pharmacy';
 

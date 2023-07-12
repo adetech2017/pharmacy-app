@@ -28,6 +28,11 @@ Route::group(['prefix' => 'pharmacy'], function () {
     Route::post('create-pharmacy', [AuthController::class, 'create_pharmacy'])->name('create.pharmacy');
     Route::post('auth-pharmacy', [AuthController::class, 'login_auth'])->name('auth.pharmacy');
 
+    Route::get('forget-password', [AuthController::class, 'showForgetPasswordForm'])->name('forget.password.get');
+    Route::post('forget-password', [AuthController::class, 'submitForgetPasswordForm'])->name('forget.password.post');
+    Route::get('reset-password/{token}', [AuthController::class, 'showResetPasswordForm'])->name('reset.password.get');
+    Route::post('reset-password', [AuthController::class, 'submitResetPasswordForm'])->name('reset.password.post');
+
     Route::get('log-out',[AuthController::class, 'destroy'])->name('auth.logout');
 
     Route::group(['middleware' => ['auth:pharmacy']], function() {
@@ -37,6 +42,11 @@ Route::group(['prefix' => 'pharmacy'], function () {
         Route::post('add-product', [ProductController::class, 'add_product'])->name('add.product');
         //Route::get('edit-product/{product}', [ProductController::class, 'edit'])->name('product.edit');
         Route::resource('product', ProductController::class);
+        Route::post('import-product', [ProductController::class, 'import_product'])->name('product.import_product');
+        Route::get('product-imported', [ProductController::class, 'productsImport']);
+        Route::get('edit-productImport/{slug}', [ProductController::class, 'editImport'])->name('edit.product.import');
+        Route::post('product-import', [ProductController::class, 'updateImportProduct'])->name('product.update.import');
+        Route::get('download-product-sample', [ProductController::class, 'import_sample']);
     });
 
 

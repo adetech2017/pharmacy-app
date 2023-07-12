@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="mb-3">
-    <h1 class="align-middle h3 d-inline">All Medicines</h1>
+    <h1 class="align-middle h3 d-inline">All Products</h1>
 </div>
 <div class="card">
     <div class="card-body">
@@ -50,17 +50,19 @@
                         <td>{{$result->quantity}}</td>
                         <td>{{$result->batch_number}}</td>
                         <td>
-                            <span class="badge bg-info text-white ms-2">
+                            <span class="text-white badge bg-info ms-2">
                                 {{$result->category['category_name']}}
                             </span>
                         </td>
                         <td>
                             @if($date_now > $result->expiry_date)
-                                <span class="badge bg-danger text-white ms-2">
+                                <span class="text-white badge bg-danger ms-2">
                                     Expired
                                 </span>
                             @else
-                                {{$result->expiry_date}}</td>
+                                <span class="text-white badge bg-success ms-2">
+                                    {{$result->expiry_date}}
+                                </span>
                             @endif
                         <td>
                             <a href="{{ route('product.edit',$result->id) }}" class="btn btn-primary btn-sm">Edit</a>

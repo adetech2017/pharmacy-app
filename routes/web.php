@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,9 +30,12 @@ Route::patch('update-cart', [HomeController::class, 'updateCart'])->name('update
 Route::delete('remove-from-cart', [HomeController::class, 'removeCart'])->name('remove.from.cart');
 
 
+// ----------------User Routes----------------//
+Route::get('auth-user', [UserController::class, 'index']);
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';

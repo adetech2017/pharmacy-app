@@ -16,6 +16,8 @@
 
 	<title>RescuePharm | Dashoard</title>
 
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!-- DataTables -->
     <link rel="stylesheet" href="{{ asset('plugins/datatables/css/dataTables.bootstrap4.min.css') }}">
     {{-- <link rel="stylesheet" href="{{ asset('plugins/datatables/css/responsive.bootstrap4.min.css') }}">
@@ -43,19 +45,24 @@
 
 					<li class="sidebar-item {{(Request::is('pharmacy/all-medicines') || Request::is('pharmacy/all-medicines/*')) ? 'active' : ''}}">
 						<a class="sidebar-link" href="{{ url('pharmacy/all-medicines')}}">
-                            <i class="align-middle" data-feather="user"></i> <span class="align-middle">Medicines</span>
+                            <i class="align-middle" data-feather="user"></i> <span class="align-middle">Products</span>
                         </a>
 					</li>
 
                     <li class="sidebar-item {{(Request::is('pharmacy/new-product') || Request::is('pharmacy/new-product/*')) ? 'active' : ''}}">
 						<a class="sidebar-link" href="{{ url('pharmacy/new-product')}}">
-                            <i class="align-middle" data-feather="droplet"></i> <span class="align-middle">Add Medcines</span>
+                            <i class="align-middle" data-feather="droplet"></i> <span class="align-middle">Add Product</span>
+                        </a>
+					</li>
+                    <li class="sidebar-item {{(Request::is('pharmacy/product-imported') || Request::is('pharmacy/product-imported/*')) ? 'active' : ''}}">
+						<a class="sidebar-link" href="{{ url('pharmacy/product-imported')}}">
+                            <i class="align-middle" data-feather="user"></i> <span class="align-middle">Import Products</span>
                         </a>
 					</li>
 
 					<li class="sidebar-item">
-						<a class="sidebar-link" href="pages-sign-in.html">
-                            <i class="align-middle" data-feather="log-in"></i> <span class="align-middle">Sign In</span>
+						<a class="sidebar-link" href="{{ route('auth.logout') }}">
+                            <i class="align-middle" data-feather="log-in"></i> <span class="align-middle">Sign Out</span>
                         </a>
 					</li>
 				</ul>
@@ -141,10 +148,10 @@
                                 <span class="text-dark">{{ Auth::guard('pharmacy')->user()->store_name }}</span>
                             </a>
 							<div class="dropdown-menu dropdown-menu-end">
-								<a class="dropdown-item" href="pages-profile.html"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
+								<a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
 								<a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="pie-chart"></i> Analytics</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="index.html"><i class="align-middle me-1" data-feather="settings"></i> Settings & Privacy</a>
+								<a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="settings"></i> Settings & Privacy</a>
 								<a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="help-circle"></i> Help Center</a>
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item" href="{{ route('auth.logout') }}">Log out</a>
@@ -195,6 +202,7 @@
 		</div>
 	</div>
 
+    {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> --}}
     <!-- DataTables  & Plugins -->
     <script src="{{ asset('plugins/datatables/js/jquery.dataTables.min.js') }}"></script>
     {{-- <script src="{{ asset('plugins/datatables/js/dataTables.bootstrap4.min.js') }}"></script>

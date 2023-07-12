@@ -164,17 +164,7 @@
                 </div>
             </div>
         </div>
-        <div class="order-3 col-12 col-md-12 col-xxl-6 d-flex order-xxl-2">
-            <div class="card flex-fill w-100">
-                <div class="card-header">
 
-                    <h5 class="mb-0 card-title">Real-Time</h5>
-                </div>
-                <div class="px-4 card-body">
-                    <div id="world_map" style="height:350px;"></div>
-                </div>
-            </div>
-        </div>
         <div class="order-1 col-12 col-md-6 col-xxl-3 d-flex order-xxl-1">
             <div class="card flex-fill">
                 <div class="card-header">
@@ -197,7 +187,7 @@
             <div class="card flex-fill">
                 <div class="card-header">
 
-                    <h5 class="mb-0 card-title">Latest Projects</h5>
+                    <h5 class="mb-0 card-title">Latest Products</h5>
                 </div>
                 <table class="table my-0 table-hover">
                     <thead>

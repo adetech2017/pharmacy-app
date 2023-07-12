@@ -42,7 +42,7 @@
             <div class="col-lg-6 d-none d-lg-block">
                 <div class="d-inline-flex align-items-center h-100">
                     <a class="mr-3 text-body" href="">About</a>
-                    <a class="mr-3 text-body" href="{{ url('contact-us') }}">Contact</a>
+                    <a class="mr-3 text-body nav-item nav-link {{Request::is('contact-us') ? 'active' : ''}}" href="{{ url('contact-us') }}">Contact</a>
                     <a class="mr-3 text-body" href="">Help</a>
                     <a class="mr-3 text-body" href="">FAQs</a>
                 </div>
@@ -52,10 +52,31 @@
                     <div class="btn-group">
                         <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">My Account</button>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <button class="dropdown-item" type="button">
-                                <a href="{{ url('/pharmacy/login') }}">Pharmacy</a>
-                            </button>
-                            <button class="dropdown-item" type="button">User</button>
+                            @guest
+                                <button class="dropdown-item" type="button">
+                                    <a href="{{ url('/pharmacy/login') }}">Pharmacy</a>
+                                </button>
+                                <button class="dropdown-item" type="button">
+                                    <a href="{{ url('login') }}">User</a>
+                                </button>
+                            @endguest
+                            @auth
+                                <button class="dropdown-item" type="button">
+                                    {{ Auth::user()->name }}
+                                </button>
+                                <div class="mt-3 space-y-1">
+                                    <!-- Authentication -->
+                                    <form method="POST" action="{{ route('logout') }}">
+                                        @csrf
+
+                                        <x-responsive-nav-link :href="route('logout')"
+                                                onclick="event.preventDefault();
+                                                            this.closest('form').submit();">
+                                            {{ __('Log Out') }}
+                                        </x-responsive-nav-link>
+                                    </form>
+                                </div>
+                            @endauth
                         </div>
                     </div>
                     <div class="mx-2 btn-group">
@@ -100,7 +121,7 @@
             </div>
             <div class="text-right col-lg-4 col-6">
                 <p class="m-0">Customer Service</p>
-                <h5 class="m-0">+012 345 6789</h5>
+                <h5 class="m-0">+2348179873317</h5>
             </div>
         </div>
     </div>
@@ -180,7 +201,7 @@
         <div class="pt-5 row px-xl-5">
             <div class="pr-3 mb-5 col-lg-4 col-md-12 pr-xl-5">
                 <h5 class="mb-4 text-secondary text-uppercase">Get In Touch</h5>
-                <p class="mb-4">No dolore ipsum accusam no lorem. Invidunt sed clita kasd clita et et dolor sed dolor. Rebum tempor no vero est magna amet no</p>
+                <p class="mb-4">Rescue Pharm is an idea to solve the experience of patients trying to get drug prescriptions at their convenience.</p>
                 <p class="mb-2"><i class="mr-3 fa fa-map-marker-alt text-success"></i>Oregun, Ikeja Lagos, Nigeria</p>
                 <p class="mb-2"><i class="mr-3 fa fa-envelope text-success"></i>info@rescuepharm.com</p>
                 <p class="mb-0"><i class="mr-3 fa fa-phone-alt text-success"></i>+234 345 67890</p>
@@ -235,8 +256,8 @@
             <div class="col-md-6 px-xl-0">
                 <p class="text-center mb-md-0 text-md-left text-secondary">
                     &copy; <a class="text-success" href="https://rescuepharm.com.ng">RescuePharm</a>. All Rights Reserved. Designed
-                    by
-                    <a class="text-success" href="https://infitron.net">InfitronTechnologies</a>
+                    {{-- by
+                    <a class="text-success" href="https://infitron.net">InfitronTechnologies</a> --}}
                 </p>
             </div>
             <div class="text-center col-md-6 px-xl-0 text-md-right">
